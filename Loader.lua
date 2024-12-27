@@ -5,14 +5,14 @@ local Main = library:CreateWindow("MaxHub","Deep Sea")
 local tab = Main:CreateTab("Main")
 local tab2 = Main:CreateTab("Settings")
 
-tab:CreateButton("Auto Fish",function()
+tab:CreateButton("Auto Fish",function() --need acidic rod with hasty
       while true do
     local args1 = {
         [1] = 0.00001
     }
     game:GetService("Players").LocalPlayer.Character:FindFirstChild("Acidic Rod").events.cast:FireServer(unpack(args1))
 
-    wait(5)
+    wait(0.3)
 
     local args2 = {
         [1] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Acidic Rod")
