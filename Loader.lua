@@ -1,6 +1,6 @@
 local library = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/ShaddowScripts/Main/main/Library"))()
 
-local Main = library:CreateWindow("Main","Deep Sea")
+local Main = library:CreateWindow("MaxHub","Deep Sea")
 
 local tab = Main:CreateTab("Main")
 local tab2 = Main:CreateTab("Settings")
