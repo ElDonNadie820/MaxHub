@@ -12,7 +12,7 @@ tab:CreateButton("Auto Fish",function() --need acidic rod with hasty
     }
     game:GetService("Players").LocalPlayer.Character:FindFirstChild("Acidic Rod").events.cast:FireServer(unpack(args1))
 
-    wait(0.3)
+    wait(1)
 
     local args2 = {
         [1] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Acidic Rod")
