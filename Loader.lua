@@ -5,17 +5,17 @@ local Main = library:CreateWindow("MaxHub","Deep Sea")
 local tab = Main:CreateTab("Main")
 local tab2 = Main:CreateTab("Settings")
 
-tab:CreateButton("Auto Fish",function() --need acidic rod with hasty
+tab:CreateButton("Auto Fish",function()
       while true do
     local args1 = {
         [1] = 0.00001
     }
-    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Acidic Rod").events.cast:FireServer(unpack(args1))
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Holmi God Rod").events.cast:FireServer(unpack(args1))
 
-    wait(1)
+    wait(0.35)
 
     local args2 = {
-        [1] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Acidic Rod")
+        [1] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Holmi God Rod")
     }
     game:GetService("ReplicatedStorage").events.reelfinished:FireServer(unpack(args2))
 end
@@ -117,3 +117,5 @@ frame.InputEnded:Connect(function(input)
     end
 end)
 end)
+
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/ElDonNadie820/MaxHub/refs/heads/main/Loader.lua"))()
