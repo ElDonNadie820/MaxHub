@@ -12,7 +12,7 @@ tab:CreateButton("Auto Fish",function()
     }
     game:GetService("Players").LocalPlayer.Character:FindFirstChild("Holmi God Rod").events.cast:FireServer(unpack(args1))
 
-    wait(0.35)
+    wait(2.5)
 
     local args2 = {
         [1] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Holmi God Rod")
