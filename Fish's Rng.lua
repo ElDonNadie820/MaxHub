@@ -62,6 +62,23 @@ player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
     	end
 })
 
+local Button = Main:CreateButton({
+	Name = "Claim All Codes",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+        local args1 = {
+    [1] = "InDev"
+}
+game:GetService("ReplicatedStorage").Remotes.Giftcode:InvokeServer(unpack(args1))
+
+-- Segundo bloque de código
+local args2 = {
+    [1] = "HappyNewYear"
+}
+game:GetService("ReplicatedStorage").Remotes.Giftcode:InvokeServer(unpack(args2))
+    	end
+})
+
 local Button = AutoF:CreateButton({
 	Name = "Enable QuickRoll",
 	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
