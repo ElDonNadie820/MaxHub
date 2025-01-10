@@ -7,7 +7,7 @@ local Window = Luna:CreateWindow({
 	LogoID = "82795327169782", -- The Asset ID of your logo. Set to nil if you do not have a logo for Luna to use.
 	LoadingEnabled = true, -- Whether to enable the loading animation. Set to false if you do not want the loading screen or have your own custom one.
 	LoadingTitle = "Welcome To Luna Hub", -- Header for loading screen
-	LoadingSubtitle = "by maxlol2023k", -- Subtitle for loading screen
+	LoadingSubtitle = "by maxlol2023k or @eldonnadie on yt", -- Subtitle for loading screen
 
 	ConfigSettings = {
 		RootFolder = nil, -- The Root Folder Is Only If You Have A Hub With Multiple Game Scripts and u may remove it. DO NOT ADD A SLASH
