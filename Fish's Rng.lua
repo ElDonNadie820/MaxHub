@@ -51,6 +51,13 @@ local Settings = Window:CreateTab({
 	ShowTitle = true -- This will determine whether the big header text in the tab will show
 })
 
+local Craft = Window:CreateTab({
+	Name = "Craft/Equip",
+	Icon = "build",
+	ImageSource = "Material",
+	ShowTitle = true -- This will determine whether the big header text in the tab will show
+})
+
 local Button = Main:CreateButton({
 	Name = "Instant Finish Obby",
 	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
@@ -59,23 +66,6 @@ local Button = Main:CreateButton({
 local targetPosition = Vector3.new(-1687.2623291015625, 452.7837219238281, 146.44384765625)
 
 player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
-    	end
-})
-
-local Button = Main:CreateButton({
-	Name = "Claim All Codes",
-	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
-    	Callback = function()
-        local args1 = {
-    [1] = "InDev"
-}
-game:GetService("ReplicatedStorage").Remotes.Giftcode:InvokeServer(unpack(args1))
-
--- Segundo bloque de código
-local args2 = {
-    [1] = "HappyNewYear"
-}
-game:GetService("ReplicatedStorage").Remotes.Giftcode:InvokeServer(unpack(args2))
     	end
 })
 
@@ -138,12 +128,90 @@ local Button = Settings:CreateButton({
 local player = game:GetService("Players").LocalPlayer
 local kidBeater = player.PlayerGui:WaitForChild("KidBeater")
 
-wait(0.1)
+wait(0.5)
 
 if kidBeater then
     kidBeater:Destroy()
 end
 end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Luck Bracelet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Luck Bracelet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Warrior Bracelet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Warrior Bracelet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Greed Bracelet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Greed Bracelet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Thunder Bracelet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Thunder Bracelet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Royal Bracelet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Royal Bracelet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Aegis Gauntlet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Aegis Gauntlet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
 })
 
 Window:CreateHomeTab({
