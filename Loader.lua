@@ -53,7 +53,7 @@ local Settings = Window:CreateTab({
 
 local Craft = Window:CreateTab({
 	Name = "Craft/Equip",
-	Icon = "cards",
+	Icon = "dashboard",
 	ImageSource = "Material",
 	ShowTitle = true -- This will determine whether the big header text in the tab will show
 })
