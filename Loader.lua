@@ -1,121 +1,221 @@
-local library = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/ShaddowScripts/Main/main/Library"))()
+-- made for fish rng
+local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/main/source.lua", true))()
 
-local Main = library:CreateWindow("MaxHub","Deep Sea")
+local Window = Luna:CreateWindow({
+	Name = "Luna Hub", -- This Is Title Of Your Window
+	Subtitle = nil, -- A Gray Subtitle next To the main title.
+	LogoID = "82795327169782", -- The Asset ID of your logo. Set to nil if you do not have a logo for Luna to use.
+	LoadingEnabled = true, -- Whether to enable the loading animation. Set to false if you do not want the loading screen or have your own custom one.
+	LoadingTitle = "Welcome To Luna Hub", -- Header for loading screen
+	LoadingSubtitle = "by maxlol2023k or @eldonnadie on yt", -- Subtitle for loading screen
 
-local tab = Main:CreateTab("Main")
-local tab2 = Main:CreateTab("Settings")
+	ConfigSettings = {
+		RootFolder = nil, -- The Root Folder Is Only If You Have A Hub With Multiple Game Scripts and u may remove it. DO NOT ADD A SLASH
+		ConfigFolder = "Big Hub" -- The Name Of The Folder Where Luna Will Store Configs For This Script. DO NOT ADD A SLASH
+	},
 
-tab:CreateButton("Auto Fish",function()
-      while true do
-    local args1 = {
-        [1] = 0.00001
-    }
-    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Holmi God Rod").events.cast:FireServer(unpack(args1))
+	KeySystem = false, -- As Of Beta 6, Luna Has officially Implemented A Key System!
+	KeySettings = {
+		Title = "Luna Example Key",
+		Subtitle = "Key System",
+		Note = "Best Key System Ever! Also, Please Use A HWID Keysystem like Pelican, Luarmor etc. that provide key strings based on your HWID since putting a simple string is very easy to bypass",
+		SaveInRoot = false, -- Enabling will save the key in your RootFolder (YOU MUST HAVE ONE BEFORE ENABLING THIS OPTION)
+		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+		Key = {"Example Key"}, -- List of keys that will be accepted by the system, please use a system like Pelican or Luarmor that provide key strings based on your HWID since putting a simple string is very easy to bypass
+		SecondAction = {
+			Enabled = false, -- Set to false if you do not want a second action,
+			Type = "Link", -- Link / Discord.
+			Parameter = "" -- If Type is Discord, then put your invite link (DO NOT PUT DISCORD.GG/). Else, put the full link of your key system here.
+		}
+	}
+})
 
-    wait(2.5)
+local Main = Window:CreateTab({
+	Name = "Main",
+	Icon = "business",
+	ImageSource = "Material",
+	ShowTitle = true -- This will determine whether the big header text in the tab will show
+})
 
-    local args2 = {
-        [1] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Holmi God Rod")
-    }
-    game:GetService("ReplicatedStorage").events.reelfinished:FireServer(unpack(args2))
-end
-end)
+local AutoF = Window:CreateTab({
+	Name = "Auto Farm",
+	Icon = "autorenew",
+	ImageSource = "Material",
+	ShowTitle = true -- This will determine whether the big header text in the tab will show
+})
 
-tab:CreateButton("Safe Place Make",function()
-local parte = Instance.new("Part")
-parte.Name = "ParteBlanca"
-parte.Size = Vector3.new(50, 0.5000000596046448, 50)  -- Tamaño especificado
-parte.Position = Vector3.new(-1184.078, 200.389648, -1141.19434)  -- Posición especificada
-parte.Color = Color3.fromRGB(255, 255, 255)  -- Color blanco
-parte.Anchored = true  -- Anclar la parte para que no se mueva
-parte.Parent = game.Workspace  -- Insertar la parte en el Workspace
+local Settings = Window:CreateTab({
+	Name = "Settings",
+	Icon = "build",
+	ImageSource = "Material",
+	ShowTitle = true -- This will determine whether the big header text in the tab will show
+})
 
--- Crear la segunda parte (la parte negra)
-local part = Instance.new("Part")
-part.Name = "SafePlaceTP"
-part.Size = Vector3.new(5, 8, 5)  -- Tamaño de la parte
-part.Position = Vector3.new(-1184.078, 210.389648, -1141.19434)  -- Posición especificada
-part.Color = Color3.fromRGB(0, 0, 0)  -- Color negro
-part.CanCollide = false  -- Deshabilitar colisión
-part.Parent = game.Workspace
-part.Anchored = true
-end)
+local Craft = Window:CreateTab({
+	Name = "Craft/Equip",
+	Icon = "build",
+	ImageSource = "Material",
+	ShowTitle = true -- This will determine whether the big header text in the tab will show
+})
 
-tab:CreateButton("Safe Place Tp",function()
-local player = game.Players.LocalPlayer
+local Button = Main:CreateButton({
+	Name = "Instant Finish Obby",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+         local player = game:GetService("Players").LocalPlayer
+local targetPosition = Vector3.new(-1687.2623291015625, 452.7837219238281, 146.44384765625)
 
-if player and player.Character then
-    local character = player.Character
-    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")  -- Obtener la parte que representa la posición del personaje
+player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
+    	end
+})
 
-    local newCFrame = CFrame.new(-1184.078, 210.389648, -1141.19434)
-    
-    humanoidRootPart.CFrame = newCFrame
-end
-end)
+local Button = AutoF:CreateButton({
+	Name = "Enable QuickRoll",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = game:GetService("Players").LocalPlayer
+}
 
-tab2:CreateButton("Night Mode",function()
+game:GetService("ReplicatedStorage").Remotes.EnableQuick:FireServer(unpack(args))
+
 local player = game:GetService("Players").LocalPlayer
-local playerGui = player.PlayerGui
+local quickButtonColor = player.PlayerGui.SpinUI.QuickButton.Color
 
-local hud = playerGui:WaitForChild("hud")
+quickButtonColor.Visible = true
+    	end
+})
 
-local frame = Instance.new("Frame")
-frame.Parent = hud  -- Establece el frame como hijo de "hud"
-frame.Size = UDim2.new(1, 0, 1, 0)  -- El tamaño del frame ocupa toda la pantalla
-frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)  -- Color negro
-frame.BackgroundTransparency = 0.5
-frame.Name = "NightMode"
-end)
-
-tab2:CreateButton("happi face",function()
+local Button = Settings:CreateButton({
+	Name = "Afk",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local player = game.Players.LocalPlayer
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "happy"
-screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.Parent = player:WaitForChild("PlayerGui")
+screenGui.Name = "KidBeater"
 
-local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 50, 0, 50)
-frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-frame.Position = UDim2.new(0, 100, 0, 100) -- Puedes cambiar la posición inicial
-frame.Parent = screenGui
-frame.BackgroundTransparency =1
+-- Crea un TextLabel para mostrar el tiempo
+local timeLabel = Instance.new("TextLabel")
+timeLabel.Parent = screenGui
+timeLabel.Text = "TimeAfk: 0"
+timeLabel.Size = UDim2.new(0, 200, 0, 50) -- Tamaño del label
+timeLabel.Position = UDim2.new(0.5, -100, 0.5, -25) -- Centrado en la pantalla
+timeLabel.TextColor3 = Color3.fromRGB(255, 255, 255) -- Color blanco
+timeLabel.TextScaled = true -- Ajusta el tamaño del texto para que encaje en el label
 
-local textLabel = Instance.new("TextLabel")
-textLabel.Size = UDim2.new(1, 0, 1, 0)  -- Ocupa todo el espacio del Frame
-textLabel.Text = ":)"
-textLabel.TextColor3 = Color3.fromRGB(0, 0, 0) -- Negro
-textLabel.TextScaled = true  -- Hace que el texto se ajuste al tamaño del Frame
-textLabel.BackgroundTransparency = 0  -- Hace que el fondo del texto sea transparente
-textLabel.Parent = frame
-textLabel.Active = true
-textLabel.Draggable = true
-textLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+-- Inicializa una variable para el tiempo de inactividad
+local timeAfk = 0
 
-local dragging = true
-local dragInput, dragStart, startPos
-
-frame.InputBegan:Connect(function(input, gameProcessedEvent)
-    if gameProcessedEvent then return end
-
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true
-        dragStart = input.Position
-        startPos = frame.Position
+-- Función para actualizar el tiempo
+local function updateAfkTime()
+    while true do
+        wait(1) -- Espera un segundo
+        timeAfk = timeAfk + 1
+        timeLabel.Text = "TimeAfk: " .. timeAfk -- Actualiza el texto
     end
-end)
+end
 
-frame.InputChanged:Connect(function(input)
-    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
-        local delta = input.Position - dragStart
-        frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-    end
-end)
+-- Llama a la función para empezar a contar el tiempo
+updateAfkTime()
+end
+})
 
-frame.InputEnded:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true
-    end
-end)
-end)
+local Button = Settings:CreateButton({
+	Name = "Delete Afk",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local player = game:GetService("Players").LocalPlayer
+local kidBeater = player.PlayerGui:WaitForChild("KidBeater")
 
---loadstring(game:HttpGet("https://raw.githubusercontent.com/ElDonNadie820/MaxHub/refs/heads/main/Loader.lua"))()
+wait(0.5)
+
+if kidBeater then
+    kidBeater:Destroy()
+end
+end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Luck Bracelet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Luck Bracelet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Warrior Bracelet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Warrior Bracelet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Greed Bracelet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Greed Bracelet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Thunder Bracelet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Thunder Bracelet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Royal Bracelet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Royal Bracelet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
+})
+
+local Button = Craft:CreateButton({
+	Name = "Aegis Gauntlet",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+local args = {
+    [1] = "Aegis Gauntlet"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Glove:InvokeServer(unpack(args))
+
+    	end
+})
+
+Window:CreateHomeTab({
+	SupportedExecutors = {Delta}, -- A Table Of Executors Your Script Supports. Add strings of the executor names for each executor.
+	DiscordInvite = "2zr9eeuu", -- The Discord Invite Link. Do Not Include discord.gg/ | Only Include the code.
+	Icon = 1, -- By Default, The Icon Is The Home Icon. If You would like to change it to dashboard, replace the interger with 2
+})
