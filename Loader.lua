@@ -69,23 +69,6 @@ player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
     	end
 })
 
-local Button = AutoF:CreateButton({
-	Name = "Enable QuickRoll",
-	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
-    	Callback = function()
-local args = {
-    [1] = game:GetService("Players").LocalPlayer
-}
-
-game:GetService("ReplicatedStorage").Remotes.EnableQuick:FireServer(unpack(args))
-
-local player = game:GetService("Players").LocalPlayer
-local quickButtonColor = player.PlayerGui.SpinUI.QuickButton.Color
-
-quickButtonColor.Visible = true
-    	end
-})
-
 local Button = Settings:CreateButton({
 	Name = "Afk",
 	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
