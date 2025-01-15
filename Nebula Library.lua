@@ -1,6 +1,6 @@
-Nebula = {}
+_G.Main = {}
 
-function Nebula:New(Title)
+function _G.Main:New(Title)
 	
 	local NebulaLibrary = Instance.new("ScreenGui")
 	local Frame = Instance.new("Frame")
